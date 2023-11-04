@@ -2,8 +2,8 @@ import { NavLink } from 'react-router-dom';
 import './Navber.css'
 const Navber = () => {
     return (
-        <div className="">
-            <div className="navbar bg-base-100 px:0 lg:px-32">
+        <div className="navber">
+            <div className="navbar bg-transparent text-white px:0 lg:px-32">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -16,7 +16,11 @@ const Navber = () => {
                         <NavLink to='/borrowedBooks'><a>Borrowed Books</a></NavLink>
                         </ul>
                     </div>
-                    <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
+                    <div className='flex items-center'>
+                        <img src="https://i.ibb.co/BBtg816/Logo.png" className='w-16' alt="" />
+                        <a className="normal-case text-sky-600 font-bold text-2xl">Books Library</a>
+                    </div>
+                    
                 </div>
                 <div className="navbar-center hidden lg:flex ">
                     <ul className="menu menu-horizontal gap-5 px-1 items-center">
