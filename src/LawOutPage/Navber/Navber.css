@@ -1,0 +1,8 @@
+.active {
+    background-color: rgb(5, 211, 238);
+    padding: 8px 13px;
+    border-radius: 9px;
+    font-size: 19px;
+    color: white;
+  }
+  
