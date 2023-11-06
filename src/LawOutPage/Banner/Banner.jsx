@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 const Banner = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
     const slides = [
-        'https://i.ibb.co/nstVqMX/Screenshot-2023-11-05-021451.png',
         'https://i.ibb.co/zZddSGJ/Screenshot-2023-11-05-021517.png',
+        'https://i.ibb.co/nstVqMX/Screenshot-2023-11-05-021451.png',
         'https://i.ibb.co/G2PsZ4x/Screenshot-2023-11-05-021605.png',
     ];
 
@@ -17,7 +17,7 @@ const Banner = () => {
     };
 
     useEffect(() => {
-        const autoChange = setInterval(nextSlide, 3000); // Change image every 3 seconds
+        const autoChange = setInterval(nextSlide, 3000);
         return () => {
             clearInterval(autoChange);
         };

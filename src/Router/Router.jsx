@@ -9,6 +9,7 @@ import NovelCategory from "../LawOutPage/BooksCategories/NovelCategory/NovelCate
 import ThrilerCategory from "../LawOutPage/BooksCategories/ThrilerCategory/ThrilerCategory";
 import DramaCategory from "../LawOutPage/BooksCategories/DramaCategory/DramaCategory";
 import BookDetails from "../Components/BookDetails/BookDetails";
+import UpdateBook from "../Components/AllBooks/UpdateBook/UpdateBook";
 
 const Router = createBrowserRouter ([
     {
@@ -25,7 +26,8 @@ const Router = createBrowserRouter ([
             },
             {
                 path: '/allBooks',
-                element: <AllBooks></AllBooks>
+                element: <AllBooks></AllBooks>,
+                loader: () => fetch('http://localhost:5000/book')
             },
             {
                 path: '/borrowedBooks',
@@ -51,6 +53,11 @@ const Router = createBrowserRouter ([
                 path: '/bookDetails/:id',
                 element: <BookDetails></BookDetails>,
                 loader: () => fetch(`http://localhost:5000/book`)
+            },
+            {
+                path: '/updateBook/:id',
+                element: <UpdateBook></UpdateBook>,
+                loader: ({params}) => fetch(`http://localhost:5000/book/${params.id}`)
             }
 
         ]

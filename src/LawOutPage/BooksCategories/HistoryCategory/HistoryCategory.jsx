@@ -37,14 +37,14 @@ const HistoryCategory = () => {
                                         <div className="flex items-center mb-1">
                                             <Rating
                                                 count={5}
-                                                value={bookRatings[book._id] || 0}
+                                                value={bookRatings[book._id] || book.rating}
                                                 size={24}
                                                 edit={true}
                                                 activeColor="#f8ce0b"
                                                 onChange={(rating) => handleRatingChange(book._id, rating)}
                                             />
                                         </div>
-                                        <span className="bg-yellow-500 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded ml-3">{book.rating}</span>
+                                        <span className="bg-yellow-500 text-gray-900 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded ml-3">{book.rating}/5</span>
                                     </div>
 
                                     <div className="card-actions">
