@@ -34,21 +34,23 @@ const HistoryCategory = () => {
                                     <p>Author: {book.Author}</p>
                                     <p>Category: {book.Category}</p>
                                     <div className="flex items-center">
-                                    <div className="flex items-center mb-1">
-                                        <Rating
-                                            count={5}
-                                            value={bookRatings[book._id] || 0} // Use the dynamic rating from state
-                                            size={24}
-                                            edit={true} // Enable user interaction
-                                            activeColor="#f8ce0b"
-                                            onChange={(rating) => handleRatingChange(book._id, rating)} // Handle rating change
-                                        />
+                                        <div className="flex items-center mb-1">
+                                            <Rating
+                                                count={5}
+                                                value={bookRatings[book._id] || 0}
+                                                size={24}
+                                                edit={true}
+                                                activeColor="#f8ce0b"
+                                                onChange={(rating) => handleRatingChange(book._id, rating)}
+                                            />
+                                        </div>
+                                        <span className="bg-yellow-500 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded ml-3">{book.rating}</span>
                                     </div>
-                                    <span className="bg-yellow-500 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded ml-3">{book.rating}</span>
-                                    </div>
-                                    
+
                                     <div className="card-actions">
-                                        <button className="btn btn-outline btn-info"><span className="text-white">Show Details</span></button>
+                                        <Link to={`/bookDetails/${book._id}`}>
+                                            <button className="btn btn-outline btn-info"><span className="text-white">Show Details</span></button>
+                                        </Link>
                                     </div>
                                 </div>
                             </div>

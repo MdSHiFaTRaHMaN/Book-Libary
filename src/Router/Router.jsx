@@ -8,6 +8,7 @@ import HistoryCategory from "../LawOutPage/BooksCategories/HistoryCategory/Histo
 import NovelCategory from "../LawOutPage/BooksCategories/NovelCategory/NovelCategory";
 import ThrilerCategory from "../LawOutPage/BooksCategories/ThrilerCategory/ThrilerCategory";
 import DramaCategory from "../LawOutPage/BooksCategories/DramaCategory/DramaCategory";
+import BookDetails from "../Components/BookDetails/BookDetails";
 
 const Router = createBrowserRouter ([
     {
@@ -45,6 +46,11 @@ const Router = createBrowserRouter ([
             {
                 path: '/drama',
                 element: <DramaCategory></DramaCategory>
+            },
+            {
+                path: '/bookDetails/:id',
+                element: <BookDetails></BookDetails>,
+                loader: () => fetch(`http://localhost:5000/book`)
             }
 
         ]
