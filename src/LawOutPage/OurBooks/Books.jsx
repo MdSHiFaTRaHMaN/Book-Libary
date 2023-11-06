@@ -4,7 +4,7 @@ const Books = ({ book }) => {
     const { name, Author, photoURL, rating, Category } = book;
     return (
 
-        <div className="w-full max-w-sm border border-gray-200 hover:border-2 hover:border-gray-200 rounded-lg shadow  bg-[#284c89] hover:bg-transparent">
+        <div className="w-full max-w-sm border-2 border-gray-200 hover:border-2 hover:border-gray-200 shadow  bg-[#284c89] hover:bg-transparent">
             <div className="background">
                 <img className=" mx-auto w-40 h-[250px] opacity-100" src={photoURL} alt="product image" />
             </div>
