@@ -12,6 +12,7 @@ import BookDetails from "../Components/BookDetails/BookDetails";
 import UpdateBook from "../Components/AllBooks/UpdateBook/UpdateBook";
 import Login from "../Components/Login/Login";
 import Register from "../Components/Register/Register";
+import PrivetRoute from "./PrivetRoute";
 
 const Router = createBrowserRouter ([
     {
@@ -33,7 +34,7 @@ const Router = createBrowserRouter ([
             },
             {
                 path: '/borrowedBooks',
-                element: <BorrowedBooks></BorrowedBooks>
+                element: <PrivetRoute><BorrowedBooks></BorrowedBooks></PrivetRoute>
             },
             {
                 path: '/history',

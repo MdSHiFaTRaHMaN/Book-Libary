@@ -3,9 +3,9 @@ import { useState, useEffect } from 'react';
 const Banner = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
     const slides = [
-        'https://i.ibb.co/zZddSGJ/Screenshot-2023-11-05-021517.png',
-        'https://i.ibb.co/nstVqMX/Screenshot-2023-11-05-021451.png',
-        'https://i.ibb.co/G2PsZ4x/Screenshot-2023-11-05-021605.png',
+        'https://i.ibb.co/1ZQcL7g/Screenshot-2023-11-08-033652.png',
+        'https://i.ibb.co/R0vsXGr/Screenshot-2023-11-08-034345.png',
+        'https://i.ibb.co/hMZNKT9/Screenshot-2023-11-08-033539.png',
     ];
 
     const nextSlide = () => {

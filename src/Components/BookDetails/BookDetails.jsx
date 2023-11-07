@@ -1,22 +1,26 @@
 import { useLoaderData, useParams } from "react-router-dom";
 import './bookDetails.css'
 import Swal from "sweetalert2";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
+import moment from "moment";
 const BookDetails = () => {
     const bookDetails = useLoaderData();
-    const [date, setDate] = useState([]);
     const { id } = useParams();
     const idInt = id;
     const book = bookDetails.find((details) => details._id === idInt);
     const { _id, name, Category, rating, photoURL, discriptions, Author, Date, Quantity } = book;
-
     const [remainingQuantity, setRemainingQuantity] = useState(Quantity);
-    // const [quantityN, setQuantity] = useState(remainingQuantity);
+
+    const currentDateTime = moment().format('MMMM Do YYYY, h:mm a');
+    console.log(currentDateTime)
+
+    const { user } = useContext(AuthContext);
 
     const handleBorrow = () => {
         Swal.fire({
             title: "Return Date",
-            text: `Email: ${name}`,
+            text: `Email: ${user.email}`,
             input: "date",
             inputAttributes: {
                 autocapitalize: "off"
@@ -25,7 +29,8 @@ const BookDetails = () => {
             confirmButtonText: "Submit"
         }).then((result) => {
             console.log(result)
-            if (result.isConfirmed == true) {
+            // setReturnDate(result.value)
+            if (result.isConfirmed === true) {
                 if (remainingQuantity > 0) {
                     // Decrement the quantity by 1
                     setRemainingQuantity(remainingQuantity - 1);
@@ -34,25 +39,42 @@ const BookDetails = () => {
                         text: "Your Book has been Borrowed Successful.",
                         icon: "success"
                     });
-                    // const number = (remainingQuantity - 1)
-                    // console.log(number)
-                    // console.log(_id)
-                    // Perform any other actions here, e.g., send the username to the server
-                } else {
-                    Swal.fire({
-                        title: "Not enough quantity available",
-                        text: "Sorry, this book is out of stock.",
-                        icon: "error"
-                    });
-                }
-               
+                    const remaining = remainingQuantity - 1;
+                    const borrowing = {
+                        name,
+                        remaining,
+                        Author,
+                        bookID: _id,
+                        photoURL,
+                        Category,
+                        rating,
+                        ReturnDate: result.value,
+                        email: user.email,
+                        currentDateTime
+                    }
+                    console.log(borrowing)
+                    fetch('http://localhost:5000/borrowings', {
+                        method: 'POST',
+                        headers: {
+                            'content-type': 'application/json'
+                        },
+                        body: JSON.stringify(borrowing)
+                    })
+                        .then(res => res.json())
+                        .then(data => {
+                            console.log(data);
+                            if (data.insertedId) {
+                                console.log("hello")
+                            }
 
-              
+                        })
+
+
+                }
             }
         });
 
     }
-
     return (
         <div>
             <div className="hero min-h-screen rounded-lg w-10/12 back mx-auto ">
