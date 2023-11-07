@@ -1,11 +1,57 @@
 import { useLoaderData, useParams } from "react-router-dom";
 import './bookDetails.css'
+import Swal from "sweetalert2";
+import { useState } from "react";
 const BookDetails = () => {
     const bookDetails = useLoaderData();
-    const { id } = useParams()
+    const [date, setDate] = useState([]);
+    const { id } = useParams();
     const idInt = id;
     const book = bookDetails.find((details) => details._id === idInt);
-    const { name, Category, rating, photoURL,discriptions, Author,Date,Quantity } = book;
+    const { _id, name, Category, rating, photoURL, discriptions, Author, Date, Quantity } = book;
+
+    const [remainingQuantity, setRemainingQuantity] = useState(Quantity);
+    // const [quantityN, setQuantity] = useState(remainingQuantity);
+
+    const handleBorrow = () => {
+        Swal.fire({
+            title: "Return Date",
+            text: `Email: ${name}`,
+            input: "date",
+            inputAttributes: {
+                autocapitalize: "off"
+            },
+            showCancelButton: true,
+            confirmButtonText: "Submit"
+        }).then((result) => {
+            console.log(result)
+            if (result.isConfirmed == true) {
+                if (remainingQuantity > 0) {
+                    // Decrement the quantity by 1
+                    setRemainingQuantity(remainingQuantity - 1);
+                    Swal.fire({
+                        title: "Borrowed",
+                        text: "Your Book has been Borrowed Successful.",
+                        icon: "success"
+                    });
+                    // const number = (remainingQuantity - 1)
+                    // console.log(number)
+                    // console.log(_id)
+                    // Perform any other actions here, e.g., send the username to the server
+                } else {
+                    Swal.fire({
+                        title: "Not enough quantity available",
+                        text: "Sorry, this book is out of stock.",
+                        icon: "error"
+                    });
+                }
+               
+
+              
+            }
+        });
+
+    }
 
     return (
         <div>
@@ -14,21 +60,27 @@ const BookDetails = () => {
                     <img src={photoURL} className="max-w-sm rounded-lg shadow-2xl w-52" />
                     <div className="text-white">
                         <h1 className="text-3xl font-bold">{name}</h1>
-                        <p className="py-1 text-gray-200 font-semibold">Aurthor: <span className="text-xl text-white font-semibold">{Author}</span></p>
+                        <p className="py-1 text-gray-200 font-semibold">Author: <span className="text-xl text-white font-semibold">{Author}</span></p>
                         <p className="py-1 text-gray-200 font-semibold">Category: <span className="text-xl text-white font-semibold">{Category}</span></p>
                         <p className="py-1 text-gray-200 font-semibold">Rating: <span className="text-xl text-white font-semibold">{rating}</span></p>
-                        <p className="py-1 text-gray-200 font-semibold">Quantity: <span className="text-xl text-white font-semibold">{Quantity}</span></p>
-                        <p className="py-1 text-gray-200 font-semibold" >Realase Date: <span className="text-xl text-white font-semibold">{Date}</span></p>
-                        <p className="py-1 text-gray-200 font-semibold">Language: <span className="text-xl text-white font-semibold">English(Only)</span></p>
+                        <p className="py-1 text-gray-200 font-semibold">Remaining Quantity: <span className="text-xl text-white font-semibold">{remainingQuantity}</span></p>
+                        <p className="py-1 text-gray-200 font-semibold">Release Date: <span className="text-xl text-white font-semibold">{Date}</span></p>
+                        <p className="py-1 text-gray-200 font-semibold">Language: <span className="text-xl text-white font-semibold">English (Only)</span></p>
                         <div className="flex gap-4 mt-4">
-                        <button className="btn btn-outline btn-secondary"><span className="text-white">Brrow Book</span></button>
-                        <button className="btn btn-info">Read More</button>
+                            <button
+                                className="btn btn-outline btn-secondary"
+                                onClick={handleBorrow}
+                                disabled={remainingQuantity <= 0}
+                            >
+                                <span className="text-white">Borrow Book</span>
+                            </button>
+                            <button className="btn btn-info">Read More</button>
                         </div>
                     </div>
                 </div>
                 <div className="mt-[500px] w-11/12 text-white">
-                   <h1 className="text-4xl font-bold"> Book OverView</h1>
-                   <p className="text-lg mt-2">{discriptions}</p>
+                    <h1 className="text-4xl font-bold">Book Overview</h1>
+                    <p className="text-lg mt-2">{discriptions}</p>
                 </div>
             </div>
         </div>

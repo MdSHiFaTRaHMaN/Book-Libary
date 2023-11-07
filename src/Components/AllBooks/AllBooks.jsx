@@ -42,7 +42,7 @@ const AllBooks = () => {
                             </div>
                             <div className="flex items-center mt-1 text-gray-700 dark:text-gray-200">
                                 <img src="https://i.ibb.co/vq1XcSP/Screenshot-2023-11-06-231224-removebg-preview.png" className="w-8" alt="" />
-                                <h1 className="px-2 ml-1 text-lg font-semibold">Quantity - {book.Quantity}</h1>
+                                <h1 className="px-2 ml-1 text-lg font-semibold">Quantity → {book.Quantity}</h1>
                             </div>
                             <div className="flex items-center mt-1 text-gray-700 dark:text-gray-200">
                                 <span className="bg-yellow-500 text-blue-800 text-xs font-semibold mr-0.5 px-2.5 py-0.5 rounded">{book.rating}/5</span>

@@ -10,6 +10,8 @@ import ThrilerCategory from "../LawOutPage/BooksCategories/ThrilerCategory/Thril
 import DramaCategory from "../LawOutPage/BooksCategories/DramaCategory/DramaCategory";
 import BookDetails from "../Components/BookDetails/BookDetails";
 import UpdateBook from "../Components/AllBooks/UpdateBook/UpdateBook";
+import Login from "../Components/Login/Login";
+import Register from "../Components/Register/Register";
 
 const Router = createBrowserRouter ([
     {
@@ -58,7 +60,16 @@ const Router = createBrowserRouter ([
                 path: '/updateBook/:id',
                 element: <UpdateBook></UpdateBook>,
                 loader: ({params}) => fetch(`http://localhost:5000/book/${params.id}`)
+            },
+            {
+                path: '/login',
+                element: <Login></Login>
+            },
+            {
+                path: '/register',
+                element: <Register></Register>
             }
+
 
         ]
     }
