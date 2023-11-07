@@ -9,24 +9,27 @@ const Footer = () => {
                 <div className="container px-5 py-24 mx-auto w-full lg:w-5/6 flex md:items-center lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col">
                     <div className="w-80 lg:w-96 flex-shrink-0 md:mx-0 mx-auto text-center md:text-left">
                     <a className="flex title-font font-medium items-center md:justify-start lg:justify-center text-gray-900">
-                        <img src='https://i.ibb.co/wRpVfBQ/Screenshot-2023-10-20-185606-removebg-preview.png' alt="Logo" className='w-20 lg:w-28 '  />
-                        <span className="ml-3 text-2xl text-blue-700 font-semibold">ElectronicsWorld LTD</span>
+                        <img src='https://i.ibb.co/BBtg816/Logo.png' alt="Logo" className='w-20 lg:w-28 '  />
+                        <span className="ml-3 text-2xl text-blue-700 font-semibold">Books Library</span>
                     </a>
                     <p className="mt-2 mx-auto text-sm text-white">Company and Professional registrations, Legal Services, Website Preparing, 
                     Resume Preparing Serces and all types of counsellings under one roof hastle free.</p>
                     </div>
                     <div className="flex-grow flex flex-wrap md:pl-20 -mb-10 md:mt-0 mt-10 md:text-left text-center">
                     <div className="lg:w-1/3 md:w-1/2 w-full px-4">
-                        <h2 className="title-font font-medium text-white tracking-widest text-xl mb-3">ElectronicsWorld LTD</h2>
+                        <h2 className="title-font font-medium text-white tracking-widest text-xl mb-3">Books Library</h2>
                         <nav className="list-none mb-10">
                         <li>
                             <Link to='/'>Home</Link>
                         </li>
                         <li>
-                            <Link to='/' className="text-white hover:text-gray-800">Add Product</Link>
+                            <Link to='/' className="text-white hover:text-gray-800">Add Book</Link>
                         </li>
                         <li>
-                            <a className="text-white">Add to Card</a>
+                            <a className="text-white">All Books</a>
+                        </li>
+                        <li>
+                            <a className="text-white">Borrow Book</a>
                         </li>
                         <li>
                             <a className="text-white">Login/Register</a>

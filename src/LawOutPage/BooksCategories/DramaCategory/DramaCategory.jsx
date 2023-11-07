@@ -37,7 +37,7 @@ const DramaCategory = () => {
                                         <div className="flex items-center mb-1">
                                             <Rating
                                                 count={5}
-                                                value={bookRatings[book._id] || 0}
+                                                value={bookRatings[book._id] || book.rating}
                                                 size={24}
                                                 edit={true}
                                                 activeColor="#f8ce0b"
