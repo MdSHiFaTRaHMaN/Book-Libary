@@ -5,7 +5,7 @@ import Rating from 'react-rating-stars-component';
 const ThrilerCategory = () => {
   const [historyBooks, setHistoryBooks] = useState([]);
   useEffect(() => {
-      fetch("http://localhost:5000/book")
+      fetch("https://book-library-server-two.vercel.app/book")
           .then(res => res.json())
           .then(data => setHistoryBooks(data))
   }, [])

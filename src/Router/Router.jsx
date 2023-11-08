@@ -32,7 +32,7 @@ const Router = createBrowserRouter ([
             {
                 path: '/allBooks',
                 element: <PrivetRoute><AllBooks></AllBooks></PrivetRoute>,
-                loader: () => fetch('http://localhost:5000/book')
+                loader: () => fetch('https://book-library-server-two.vercel.app/book')
             },
             {
                 path: '/borrowedBooks',
@@ -57,12 +57,12 @@ const Router = createBrowserRouter ([
             {
                 path: '/bookDetails/:id',
                 element: <PrivetRoute><BookDetails></BookDetails></PrivetRoute>,
-                loader: () => fetch(`http://localhost:5000/book`)
+                loader: () => fetch(`https://book-library-server-two.vercel.app/book`)
             },
             {
                 path: '/updateBook/:id',
                 element: <PrivetRoute><UpdateBook></UpdateBook></PrivetRoute>,
-                loader: ({params}) => fetch(`http://localhost:5000/book/${params.id}`)
+                loader: ({params}) => fetch(`https://book-library-server-two.vercel.app/book/${params.id}`)
             },
             {
                 path: '/login',

@@ -46,15 +46,12 @@ const Navber = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    {/* <div>
-                        <h3 className='ml-8'>Email: {user?.email}</h3>
-                    </div> */}
                     {
                         user ?
                             <div className='flex items-center'>
                                 <div className='text-center hidden lg:block'>
                                     <h4>{user?.displayName}</h4>
-                                    <p>{user.email}</p>
+                                    <p>{user?.email}</p>
                                 </div>
                                 <button onClick={handleSignOut} className="btn text-white font-semibold bg-gradient-to-r from-cyan-500 to-blue-500 ml-1">Sign Out</button>
                             </div>

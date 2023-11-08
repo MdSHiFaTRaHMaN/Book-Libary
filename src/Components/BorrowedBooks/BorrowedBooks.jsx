@@ -7,7 +7,7 @@ const BorrowedBooks = () => {
     
     const {user} = useContext(AuthContext);
     const [borrowing, setBorrowing] = useState([]);
-    const url = `http://localhost:5000/borrowings?email=${user.email}`;
+    const url = `https://book-library-server-two.vercel.app/borrowings?email=${user.email}`;
     useEffect( () =>{
         fetch(url, {credentials: 'include'})
         .then(res => res.json())
@@ -32,7 +32,7 @@ const BorrowedBooks = () => {
               });
           });
           if(proceed){
-            fetch(`http://localhost:5000/borrowings/${id}`,{
+            fetch(`https://book-library-server-two.vercel.app/borrowings/${id}`,{
                 method: 'DELETE'
             })
             .then(res => res.json())

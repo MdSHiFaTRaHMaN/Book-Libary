@@ -30,7 +30,6 @@ const BookDetails = () => {
             confirmButtonText: "Submit"
         }).then((result) => {
             console.log(result)
-            // setReturnDate(result.value)
             if (result.isConfirmed === true) {
                 if (remainingQuantity > 0) {
                     // Decrement the quantity by 1
@@ -54,7 +53,7 @@ const BookDetails = () => {
                         currentDateTime
                     }
                     console.log(borrowing)
-                    fetch('http://localhost:5000/borrowings', {
+                    fetch('https://book-library-server-two.vercel.app/borrowings', {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json'
