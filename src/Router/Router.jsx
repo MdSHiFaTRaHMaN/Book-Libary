@@ -13,11 +13,13 @@ import UpdateBook from "../Components/AllBooks/UpdateBook/UpdateBook";
 import Login from "../Components/Login/Login";
 import Register from "../Components/Register/Register";
 import PrivetRoute from "./PrivetRoute";
+import ErrorPage from "../ErrorPage/ErrorPage";
 
 const Router = createBrowserRouter ([
     {
         path: '/',
         element: <Root></Root>,
+        errorElement: <ErrorPage></ErrorPage>,
         children: [
             {
                 path: '/',
@@ -25,11 +27,11 @@ const Router = createBrowserRouter ([
             },
             {
                 path: '/addBooks',
-                element: <AddBooks></AddBooks>
+                element: <PrivetRoute><AddBooks></AddBooks></PrivetRoute>
             },
             {
                 path: '/allBooks',
-                element: <AllBooks></AllBooks>,
+                element: <PrivetRoute><AllBooks></AllBooks></PrivetRoute>,
                 loader: () => fetch('http://localhost:5000/book')
             },
             {
@@ -38,28 +40,28 @@ const Router = createBrowserRouter ([
             },
             {
                 path: '/history',
-                element: <HistoryCategory></HistoryCategory>
+                element: <PrivetRoute><HistoryCategory></HistoryCategory></PrivetRoute>
             },
             {
                 path: '/novel',
-                element: <NovelCategory></NovelCategory>
+                element: <PrivetRoute><NovelCategory></NovelCategory></PrivetRoute>
             },
             {
                 path: '/Thriler',
-                element: <ThrilerCategory></ThrilerCategory>
+                element: <PrivetRoute><ThrilerCategory></ThrilerCategory></PrivetRoute>
             },
             {
                 path: '/drama',
-                element: <DramaCategory></DramaCategory>
+                element: <PrivetRoute><DramaCategory></DramaCategory></PrivetRoute>
             },
             {
                 path: '/bookDetails/:id',
-                element: <BookDetails></BookDetails>,
+                element: <PrivetRoute><BookDetails></BookDetails></PrivetRoute>,
                 loader: () => fetch(`http://localhost:5000/book`)
             },
             {
                 path: '/updateBook/:id',
-                element: <UpdateBook></UpdateBook>,
+                element: <PrivetRoute><UpdateBook></UpdateBook></PrivetRoute>,
                 loader: ({params}) => fetch(`http://localhost:5000/book/${params.id}`)
             },
             {

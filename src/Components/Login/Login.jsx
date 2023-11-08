@@ -42,17 +42,17 @@ const Login = () => {
   return (
     <div>
       <div className="flex justify-center lg:pb-40 mt-5 ">
-        <div className="flex justify-center rounded shadow max-w-7xl w-[90%] bg-white py-24  m-4">
+        <div className="flex justify-center rounded shadow max-w-7xl w-[90%] bg-cyan-900 py-24  m-4">
           <div className="h-[90%] w-full mt-7">
             <div className=" flex flex-col justify-center items-center space-y-2">
               <div>
-                <h1 className="text-xl font-semibold text-blue-600 ">Here you can Login</h1>
+                <h1 className="text-xl font-semibold text-white ">Here you can Login</h1>
               </div>
             </div>
             <form onSubmit={handleLogin} >
               <div className="flex flex-col justify-center items-center mt-7 space-y-2 md:space-y-2">
                 <div className="space-y-1">
-                  <h1 className="text-base text-black">Email</h1>
+                  <h1 className="text-base text-white">Email</h1>
                   <input
                     type="email"
                     placeholder="Your Email...."
@@ -61,7 +61,7 @@ const Login = () => {
                   />
                 </div>
                 <div className="space-y-1">
-                  <h1 className="text-base text-black">Password</h1>
+                  <h1 className="text-base text-white">Password</h1>
                   <div className='flex items-center'>
                   <input
                     type={showPassword ? 'text' : 'password'}
@@ -78,7 +78,7 @@ const Login = () => {
                  
                 </div>
                 <div className="-ml-44">
-                  <a className="text-sm font-medium text-black hover:text-green-600 hover:underline underline-offset-4">
+                  <a className="text-sm font-medium text-red-600 hover:text-green-600 hover:underline underline-offset-4">
                     Forgot your Password ?
                   </a>
                 </div>
@@ -93,7 +93,7 @@ const Login = () => {
               </h2>
               <Link
                 to="/register"
-                className=" text-blue-900 flex items-center text-lg font-bold hover:underline hover:text-green-600"
+                className=" text-red-400 flex items-center text-lg font-bold hover:underline hover:text-green-600"
               >
                 <h1>Please Register </h1>
                 <BsArrowRight></BsArrowRight>

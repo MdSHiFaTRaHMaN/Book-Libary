@@ -9,10 +9,10 @@ const BorrowedBooks = () => {
     const [borrowing, setBorrowing] = useState([]);
     const url = `http://localhost:5000/borrowings?email=${user.email}`;
     useEffect( () =>{
-        fetch(url)
+        fetch(url, {credentials: 'include'})
         .then(res => res.json())
         .then(data => setBorrowing(data))
-    },[])
+    },[url])
     
     const handleDelete = id =>{
         const proceed = Swal.fire({
@@ -53,14 +53,9 @@ const BorrowedBooks = () => {
     }
     return (
         <div>
-            <h2 className="text-white">Borrow Book: {borrowing.length}</h2>
+            <h2 className=" text-center text-blue-700 text-3xl ">Borrow Book: {borrowing.length}</h2>
             <section className="container px-4 mx-auto min-h-screen" >
-    <div className="flex items-center gap-x-3">
-        <h2 className="text-lg font-medium text-gray-800 dark:text-white">Team members</h2>
-
-        <span className="px-3 py-1 text-xs text-blue-600 bg-blue-100 rounded-full dark:bg-gray-800 dark:text-blue-400">100 users</span>
-    </div>
-
+    
     <div className="flex flex-col mt-6">
         <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div className="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">

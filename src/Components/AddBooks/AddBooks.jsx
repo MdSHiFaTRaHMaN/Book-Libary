@@ -1,3 +1,4 @@
+import Swal from "sweetalert2";
 
 
 
@@ -31,7 +32,23 @@ const AddBooks = () => {
         .then(data => {
             console.log(data);
             if(data.insertedId){
-               console.log("hello")
+                Swal.fire({
+                    title: "Are you sure?",
+                    text: "You won't be able to revert this!",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Yes, Add Book!"
+                  }).then((result) => {
+                    if (result.isConfirmed) {
+                      Swal.fire({
+                        title: "Added!",
+                        text: "Your Book has been Added.",
+                        icon: "success"
+                      });
+                    }
+                  });
             }
            
         })

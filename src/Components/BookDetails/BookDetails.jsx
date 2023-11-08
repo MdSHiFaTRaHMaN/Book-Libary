@@ -4,6 +4,7 @@ import Swal from "sweetalert2";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import moment from "moment";
+import { BsFillFileEarmarkPdfFill } from 'react-icons/bs';
 const BookDetails = () => {
     const bookDetails = useLoaderData();
     const { id } = useParams();
@@ -73,13 +74,20 @@ const BookDetails = () => {
                 }
             }
         });
-
     }
+    const downloadPdf = () => {
+        const pdfFileUrl = "https://drive.google.com/file/d/1JeHjyNnNEnVoFz28pDoGkW8CWnwg6HUK/preview";
+        const link = document.createElement('a');
+        link.href = pdfFileUrl;
+        link.download = 'downloaded_pdf.pdf';
+        link.click();
+    };
+
     return (
         <div>
             <div className="hero min-h-screen rounded-lg w-10/12 back mx-auto ">
-                <div className="hero-content flex -mt-32 gap-20">
-                    <img src={photoURL} className="max-w-sm rounded-lg shadow-2xl w-52" />
+                <div className="hero-content grid lg:flex -mt-32 gap-20">
+                    <img src={photoURL} className="max-w-sm mx-auto rounded-lg shadow-2xl w-52" />
                     <div className="text-white">
                         <h1 className="text-3xl font-bold">{name}</h1>
                         <p className="py-1 text-gray-200 font-semibold">Author: <span className="text-xl text-white font-semibold">{Author}</span></p>
@@ -96,15 +104,37 @@ const BookDetails = () => {
                             >
                                 <span className="text-white">Borrow Book</span>
                             </button>
-                            <button className="btn btn-info">Read More</button>
+                            <button
+                                className="btn btn-info"
+                                onClick={() => document.getElementById('my_modal_1').showModal()}
+                            >Read More</button>
                         </div>
                     </div>
                 </div>
-                <div className="mt-[500px] w-11/12 text-white">
+                <div className="mt-[1200px] lg:mt-[500px] w-11/12 text-white">
                     <h1 className="text-4xl font-bold">Book Overview</h1>
                     <p className="text-lg mt-2">{discriptions}</p>
                 </div>
             </div>
+            {/* Open the modal using document.getElementById('ID').showModal() method */}
+            <dialog id="my_modal_1" className="modal">
+                <div className="modal-box">
+                    <div className="flex justify-between">
+                        <h3 className="font-bold text-lg">Book Overview</h3>
+                        <button className="btn btn-warning" onClick={downloadPdf}>
+                            <span className="text-2xl text-red-800"><BsFillFileEarmarkPdfFill></BsFillFileEarmarkPdfFill></span>
+                            Download PDF
+                        </button>
+                    </div>
+                    <p className="py-4">Discriptions: {discriptions}</p>
+                    <div className="modal-action">
+                        <form method="dialog">
+                            {/* If there is a button in a form, it will close the modal */}
+                            <button className="btn">Close</button>
+                        </form>
+                    </div>
+                </div>
+            </dialog>
         </div>
     );
 };

@@ -1,6 +1,6 @@
 
 const BorrowerData = ({borrowData, handleDelete}) => {
-    const {email,photoURL,name,Author,currentDateTime,ReturnDate,_id} = borrowData;
+    const {email,photoURL,name,Author,currentDateTime,ReturnDate,_id, Category} = borrowData;
 
     return (
         <tr>
@@ -12,6 +12,7 @@ const BorrowerData = ({borrowData, handleDelete}) => {
                         <div>
                             <h2 className="font-medium text-gray-800 dark:text-white ">{name}</h2>
                             <p className="text-sm font-normal text-gray-600 dark:text-gray-400"><span className="text-green-500 font-semibold">by </span>{Author}</p>
+                            <h6 className="text-red-400 font-bold text-lx">{Category}</h6>
                         </div>
                     </div>
                 </div>
