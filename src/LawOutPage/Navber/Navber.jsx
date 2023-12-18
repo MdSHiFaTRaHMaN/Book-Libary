@@ -48,12 +48,30 @@ const Navber = () => {
                 <div className="navbar-end">
                     {
                         user ?
-                            <div className='flex items-center'>
-                                <div className='text-center hidden lg:block'>
-                                    <h4>{user?.displayName}</h4>
-                                    <p>{user?.email}</p>
+                            <div className="dropdown dropdown-bottom dropdown-end">
+                                <div className="avatar m-1" tabIndex={0}>
+                                    <div className="w-12 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                                        <img src='https://i.ibb.co/C9GVgbx/Screenshot-2023-11-26-112111.png' />
+                                    </div>
                                 </div>
-                                <button onClick={handleSignOut} className="btn text-white font-semibold bg-gradient-to-r from-cyan-500 to-blue-500 ml-1">Sign Out</button>
+                                <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+                                    <a className="flex items-center pt-2 text-sm text-gray-600 transition-colors duration-300 transform hover:bg-gray-10">
+                                        <img className="flex-shrink-0 object-cover rounded-full w-9 h-9" src="https://i.ibb.co/C9GVgbx/Screenshot-2023-11-26-112111.png" alt="jane avatar" />
+                                        <div className="mx-1">
+                                            <h1 className="text-sm font-semibold text-gray-700">{user?.displayName}</h1>
+                                            <p className="text-sm text-gray-500">{user?.email}</p>
+                                        </div>
+                                        <div className="divider"></div>
+                                    </a>
+                                    <a onClick={handleSignOut} className="flex items-center p-3 text-sm  text-blue-900 capitalize transition-colors duration-300 transform hover:bg-gray-300 hover:rounded-xl">
+                                        <svg className="w-5 h-5 mx-1" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M19 21H10C8.89543 21 8 20.1046 8 19V15H10V19H19V5H10V9H8V5C8 3.89543 8.89543 3 10 3H19C20.1046 3 21 3.89543 21 5V19C21 20.1046 20.1046 21 19 21ZM12 16V13H3V11H12V8L17 12L12 16Z" fill="currentColor"></path>
+                                        </svg>
+                                        <span className="mx-1 font-semibold">
+                                            Sign Out
+                                        </span>
+                                    </a>
+                                </ul>
                             </div>
                             :
                             <Link to="/login">
